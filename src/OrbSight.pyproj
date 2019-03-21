@@ -5,6 +5,7 @@
     <Name>OrbSight</Name>
     <RootNamespace>OrbSight</RootNamespace>
     <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <WebBrowserPort>8000</WebBrowserPort>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -42,6 +43,16 @@
     <Compile Include="OrbSight\settings.py" />
     <Compile Include="OrbSight\urls.py" />
     <Compile Include="OrbSight\wsgi.py" />
+    <Compile Include="todo\admin.py" />
+    <Compile Include="todo\apps.py" />
+    <Compile Include="todo\migrations\__init__.py" />
+    <Compile Include="todo\models.py" />
+    <Compile Include="todo\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="todo\tests.py" />
+    <Compile Include="todo\views.py" />
+    <Compile Include="todo\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
@@ -54,6 +65,10 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="OrbSight\" />
+    <Folder Include="todo\" />
+    <Folder Include="todo\migrations\" />
+    <Folder Include="todo\templates\" />
+    <Folder Include="todo\templates\todo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
@@ -86,6 +101,7 @@
     <Content Include="app\templates\app\layout.html" />
     <Content Include="app\templates\app\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="todo\templates\todo\index.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">
