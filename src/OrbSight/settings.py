@@ -31,7 +31,10 @@ ALLOWED_HOSTS = []
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
 INSTALLED_APPS = [
     'app',
+    'core',
+    'signal',
     'todo',
+    'channels',
     'corsheaders',
     'rest_framework',
     'django.contrib.admin',
@@ -76,6 +79,21 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'OrbSight.wsgi.application'
+# Redis
+ASGI_APPLICATION = 'signal.routing.application'
+
+# Channels
+# https://realpython.com/getting-started-with-django-channels/
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        'ROUTING': 'signal.routing.channel_routing',
+    }
+}
+
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {
